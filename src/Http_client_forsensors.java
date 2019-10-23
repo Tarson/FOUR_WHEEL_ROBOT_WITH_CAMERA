@@ -4,9 +4,13 @@ import java.net.Socket;
 
 public class Http_client_forsensors extends Thread  {
 
+    Http_client_forsensors()
+
+    {
 
 
-
+        start();
+    }
 
   //  Sensors = " tangaz_1 "+ az+ " kren_1 " + ax + " tangaz_2 "+  y + " kren_2 " + z + " forvard_accel "+ hum + " light " + light+ "  ";
 
@@ -22,18 +26,18 @@ public class Http_client_forsensors extends Thread  {
 
 
 
-        while (GUI.connect_with_tel)
 
-        {
 
             try {
 
 
                 Socket socket = new Socket(Manifest.IP_ADDRESS, Manifest.port_number_forsensors);
 
-
+                GUI.jTextArea.append("Connection      with sensors established \r\n");
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 String Sensors_Info = br.readLine();
+
+
                // System.out.println(Sensors_Info);
                 br.close();
 
@@ -62,7 +66,7 @@ public class Http_client_forsensors extends Thread  {
 
 
 
-            //    Thread.sleep(1000);
+            //   Thread.sleep(1000);
 
 
 
@@ -72,7 +76,7 @@ public class Http_client_forsensors extends Thread  {
                 System.out.println(e);
 
 
-
+                GUI.jTextArea.append("Connection with sensors NOT established \r\n");
 
 
                 GUI.connect_with_tel = false;
@@ -80,7 +84,7 @@ public class Http_client_forsensors extends Thread  {
 
             }
 
-        }
+
 
 
 

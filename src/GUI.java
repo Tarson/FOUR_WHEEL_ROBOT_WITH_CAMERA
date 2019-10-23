@@ -503,17 +503,10 @@ public class GUI extends javax.swing.JFrame {
 
 
             {
-                reqFocus(true);
-                try {
+
                     new Http_Client_forESP(Manifest.port_number_ESP);
 
-                } catch (Exception e) {
 
-
-                    GUI.jTextArea.append("Cannot write IP info to file\r\n");
-
-
-                }
 
 
             }
@@ -539,12 +532,10 @@ public class GUI extends javax.swing.JFrame {
             {
                 reqFocus(true);
 
-                if (!connect_with_tel) {
-                    new Control().start();
-                        connect_with_tel=true;
+
+                    new Http_client_forsensors();
 
 
-                }
 
 
             }
