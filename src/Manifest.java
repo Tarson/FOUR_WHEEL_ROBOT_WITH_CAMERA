@@ -4,9 +4,8 @@ public class Manifest {
 
 
 
-    public static String mr1 ="D:\\test1.3gp";// два файла куда поочередно пишутся данные с камеры
-    public static String  mr2= "D:\\test2.3gp";
-    public static String  IP_ADDRESS= "192.168.1.128";// для телефона
+
+    public static String  IP_ADDRESS= "192.168.1.123";// для телефона
 
     public static String  IP_ADDRESS_ESP= "192.168.1.198"; //ESP
 

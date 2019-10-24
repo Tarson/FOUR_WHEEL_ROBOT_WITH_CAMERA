@@ -4,6 +4,8 @@ import java.net.Socket;
 
 public class Http_client_forsensors extends Thread  {
 
+    String Sensors_Info;
+
     Http_client_forsensors()
 
     {
@@ -12,7 +14,7 @@ public class Http_client_forsensors extends Thread  {
         start();
     }
 
-  //  Sensors = " tangaz_1 "+ az+ " kren_1 " + ax + " tangaz_2 "+  y + " kren_2 " + z + " forvard_accel "+ hum + " light " + light+ "  ";
+  // Sensors = " tangaz_1 "+ az+ " kren_1 " + ax + " tangaz_2 "+  y + " kren_2 " + z + " forvard_accel "+ hum + " light " + light+ "  ";
 
 
 
@@ -34,15 +36,18 @@ public class Http_client_forsensors extends Thread  {
                 Socket socket = new Socket(Manifest.IP_ADDRESS, Manifest.port_number_forsensors);
 
                 GUI.jTextArea.append("Connection      with sensors established \r\n");
+                GUI.connect_with_tel=true;
+
+
                 BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-                String Sensors_Info = br.readLine();
 
 
-               // System.out.println(Sensors_Info);
-                br.close();
+            while (GUI.connect_with_tel ) {
+                Sensors_Info = br.readLine();
 
 
-                socket.close();
+                // System.out.println(Sensors_Info);
+
 
                 //String str = "разделить-строку-по-разделителю";
                 String[] subStr;
@@ -62,11 +67,17 @@ public class Http_client_forsensors extends Thread  {
                 GUI.jTextField6.setText(subStr[12]);
 
 
+                Thread.sleep(300);
 
 
 
 
-            //   Thread.sleep(1000);
+
+
+                br.close();
+            }
+
+                socket.close();
 
 
 
