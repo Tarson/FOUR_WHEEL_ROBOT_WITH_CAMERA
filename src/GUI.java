@@ -534,8 +534,7 @@ public class GUI extends javax.swing.JFrame {
 
 
                     new Http_client_forsensors();
-
-
+                    connect_with_tel =true;
 
 
             }

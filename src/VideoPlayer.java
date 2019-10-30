@@ -26,7 +26,7 @@ public class VideoPlayer {
     public static JPanel contentPane;
 
 
-
+    public final JButton pauseButton;
 
 
 
@@ -48,13 +48,35 @@ public class VideoPlayer {
 
 
 
-        mrl = "udp://@:40001";
+        mrl = "udp://@:40002";
         //mrl = "D:\\ttt.mp4";
         contentPane = new JPanel();
         contentPane.setSize(324,490);
         contentPane.setLayout(new BorderLayout());
 
+        JPanel controlsPane = new JPanel();
+        pauseButton = new JButton("ФАРА");
+        controlsPane.add(pauseButton);
+        contentPane.add(controlsPane, BorderLayout.SOUTH);
 
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                if(Manifest.FARA)
+                {Manifest.FARA=false;
+                    GUI.jTextArea.append("Выключить фару \r\n");
+                }
+
+              else
+                {Manifest.FARA=true;
+                    GUI.jTextArea.append("Включить фару \r\n");
+                }
+
+
+            }
+        });
 
 
 
